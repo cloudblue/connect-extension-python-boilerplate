@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  {{cookiecutter.project_slug}}_dev:
+    container_name: {{cookiecutter.project_slug}}_dev
+    image: cloudblueconnect/connect-extension-runner:latest
+    command: cextrun -d
+    volumes: 
+      - .:/extension
+    env_file:
+      - .{{ cookiecutter.project_slug }}_dev.env

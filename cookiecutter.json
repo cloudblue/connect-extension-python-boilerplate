@@ -1,0 +1,30 @@
+{
+    "project_name": "My Awesome Project",
+    "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+    "description": "My extension is really useful!",
+    "package_name": "connect_ext",
+    "author": "Globex Corporation",
+    "version": "0.1.0",
+    "license": [
+        "Apache Software License 2.0",
+        "MIT",
+        "BSD"
+    ],
+    "use_github_actions": "y",
+    "use_asyncio": "n",
+    "Capabilities_Info": "In order to initialize your extension, we require to know what capabilities it must support, please answer below y (for Yes) or n (for No). Press enter to continue...",
+    "subscription_process_capabilities_1of6": "Would you like to process asset purchase requests? (default: n)",
+    "subscription_process_capabilities_2of6": "Would you like to process asset change requests? (default: n)",
+    "subscription_process_capabilities_3of6": "Would you like to process asset suspend requests? (default: n)",
+    "subscription_process_capabilities_4of6": "Would you like to process asset resume requests? (default: n)",
+    "subscription_process_capabilities_5of6": "Would you like to process asset cancel requests? (default: n)",
+    "subscription_process_capabilities_6of6": "Would you like to process asset adjustment requests? (default: n)",
+    "subscription_validation_capabilities_1of2": "Would you like to validate asset purchase requests? (default: n)",
+    "subscription_validation_capabilities_2of2": "Would you like to validate asset change requests? (default: n)",
+    "product_capabilities_1of2": "Would you like to execute product actions? (default: n)",
+    "product_capabilities_2of2": "Would you like to process product custom events? (default: n)",
+    "tier_config_process_capabilities_1of2": "Would you like to process tier config setup requests? (default: n)",
+    "tier_config_process_capabilities_2of2": "Would you like to process tier config change requests? (default: n)",
+    "tier_config_validation_capabilities_1of2": "Would you like to validate tier config setup requests? (default: n)",
+    "tier_config_validation_capabilities_2of2": "Would you like to validate tier config change requests? (default: n)"
+}
