@@ -1,0 +1,9 @@
+{
+    "name": "{{ cookiecutter.project_name }}",
+    "description": "{{ cookiecutter.description }}",
+    "version": "{{ cookiecutter.version }}",
+    "readme_url": "https://example.com/README.md",
+    "changelog_url": "https://example.com/CHANGELOG.md",
+    "capabilities": {
+    }
+}
