@@ -5,9 +5,30 @@
 #
 from connect.eaas.extension import (
     Extension,
-    OK,
-    Reschedule,
-    SKIP,
+    {%- if (
+        cookiecutter.subscription_process_capabilities_1of6 == 'y' or 
+        cookiecutter.subscription_process_capabilities_2of6 == 'y' or 
+        cookiecutter.subscription_process_capabilities_3of6 == 'y' or 
+        cookiecutter.subscription_process_capabilities_4of6 == 'y' or 
+        cookiecutter.subscription_process_capabilities_5of6 == 'y' or 
+        cookiecutter.subscription_process_capabilities_6of6 == 'y' or
+        cookiecutter.tier_config_process_capabilities_1of2 == 'y' or 
+        cookiecutter.tier_config_process_capabilities_2of2 == 'y') %}
+    ProcessingResponse,
+    {%- endif %}
+    {%- if (
+        cookiecutter.subscription_validation_capabilities_1of2 == 'y' or 
+        cookiecutter.subscription_validation_capabilities_2of2 == 'y' or
+        cookiecutter.tier_config_validation_capabilities_1of2 == 'y' or 
+        cookiecutter.tier_config_validation_capabilities_2of2 == 'y') %}
+    ValidationResponse,
+    {%- endif %}
+    {%- if cookiecutter.product_capabilities_1of2 == 'y' %}
+    ProductActionResponse,
+    {%- endif %}
+    {%- if cookiecutter.product_capabilities_2of2 == 'y' %}
+    CustomEventResponse,
+    {%- endif %}
 )
 
 
