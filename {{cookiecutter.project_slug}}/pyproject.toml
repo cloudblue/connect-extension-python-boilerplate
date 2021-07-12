@@ -5,12 +5,12 @@ description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author }}"]
 license = "{{ cookiecutter.license }}"
 packages = [
-    { include = "{{ cookiecutter.package_name }}" }
+    { include = "{{ cookiecutter.package_slug }}" }
 ]
 readme = "./README.md"
 
 [tool.poetry.plugins."connect.eaas.ext"]
-"extension" = "{{ cookiecutter.package_name }}.extension:{{ cookiecutter.project_name|title|replace(' ', '') }}Extension"
+"extension" = "{{ cookiecutter.package_slug }}.extension:{{ cookiecutter.project_name|title|replace(' ', '')|replace('-', '_')|replace(',', '')| replace('.', '') }}Extension"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -43,7 +43,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 testpaths = "tests"
-addopts = "--cov={{ cookiecutter.package_name }} --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
+addopts = "--cov={{ cookiecutter.package_slug }} --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
 
 [tool.coverage.run]
 branch = true

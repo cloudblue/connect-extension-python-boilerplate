@@ -2,4 +2,3 @@
 htmlcov
 .coverage
 coverage.xml
-.{{ cookiecutter.project_slug }}_dev.env

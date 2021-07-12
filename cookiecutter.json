@@ -1,8 +1,9 @@
 {
     "project_name": "My Awesome Project",
-    "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+    "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|replace(',', '')|trim() }}",
     "description": "My extension is really useful!",
     "package_name": "connect_ext",
+    "package_slug": "{{ cookiecutter.package_name.lower()|title|replace(' ','')|replace('-', '_')|replace('.', '')|replace(',', '')|trim() }}",
     "author": "Globex Corporation",
     "version": "0.1.0",
     "license": [
