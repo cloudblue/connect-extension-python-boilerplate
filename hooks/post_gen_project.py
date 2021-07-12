@@ -78,7 +78,7 @@ def main():
     if '{{ cookiecutter.use_github_actions }}'.lower() == 'n':
         remove_github_actions()
     
-    descriptor = json.load(open('{{ cookiecutter.package_name }}/extension.json'))
+    descriptor = json.load(open('{{ cookiecutter.package_slug }}/extension.json'))
     
     subscription_processing_capabilities(descriptor)
     subscription_validation_capabilities(descriptor)
@@ -86,7 +86,7 @@ def main():
     tierconfig_validation_capabilities(descriptor)
     product_capabilities(descriptor)
     
-    json.dump(descriptor, open('{{ cookiecutter.package_name }}/extension.json', 'w'), indent=2)
+    json.dump(descriptor, open('{{ cookiecutter.package_slug }}/extension.json', 'w'), indent=2)
     
     print('Done! Your extension project is ready to go!')
 

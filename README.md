@@ -32,7 +32,8 @@ Once cookiecutter is installed you can instantiate it against this repository:
 	project_name [My Awesome Project]: My Awesome Project
 	project_slug [my_awesome_project]:
 	description [My extension for purchase request processing is super useful!]:
-	package_name [connect_ext]:
+	package_name [connect_ext]: My super awesome package
+	package_slug [my_super_awesome_package]:
 	author [Globex Corporation]: ISV Inc
 	version [0.1.0]: 1.0.0
 	Select license:

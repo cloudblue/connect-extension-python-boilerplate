@@ -8,7 +8,7 @@ import pytest
 
 from connect.eaas.extension import OK, Reschedule, SKIP
 
-from {{ cookiecutter.package_name }}.extension import {{ cookiecutter.project_name|title|replace(" ", "") }}Extension
+from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_name|title|replace(" ", "") }}Extension
 {% if (
     cookiecutter.subscription_process_capabilities_1of6 == 'y' or 
     cookiecutter.subscription_process_capabilities_2of6 == 'y' or 
