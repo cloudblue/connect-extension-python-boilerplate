@@ -7,7 +7,7 @@ import pytest
 import requests
 import responses
 
-from cnct import AsyncConnectClient, ConnectClient
+from connect.client import AsyncConnectClient, ConnectClient
 
 
 ConnectResponse = namedtuple(
