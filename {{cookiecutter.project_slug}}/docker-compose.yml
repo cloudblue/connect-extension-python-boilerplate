@@ -9,6 +9,7 @@ services:
       - .:/extension
     env_file:
       - .{{ cookiecutter.project_slug }}_dev.env
+
   {{cookiecutter.project_slug}}_bash:
     container_name: {{cookiecutter.project_slug}}_bash
     image: cloudblueconnect/connect-extension-runner:23.3
@@ -20,6 +21,7 @@ services:
       - .:/extension
     env_file:
       - .{{ cookiecutter.project_slug }}_dev.env
+
   {{cookiecutter.project_slug}}_test:
     container_name: {{cookiecutter.project_slug}}_test
     image: cloudblueconnect/connect-extension-runner:23.3

@@ -3,7 +3,7 @@
     "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|replace(',', '')|trim() }}",
     "description": "My extension is really useful!",
     "package_name": "connect_ext",
-    "package_slug": "{{ cookiecutter.package_name.lower()|title|replace(' ','')|replace('-', '_')|replace('.', '')|replace(',', '')|trim() }}",
+    "package_slug": "{{ cookiecutter.package_name.lower()|replace(' ','_')|replace('-', '_')|replace('.', '')|replace(',', '')|trim() }}",
     "author": "Globex Corporation",
     "version": "0.1.0",
     "license": [
@@ -11,6 +11,10 @@
         "MIT",
         "BSD"
     ],
+    "Credentials Info": "To use extension locally, an API Key from the integration module, an environment ID from DevOps module and a Connect API hostname are required. Press enter to continue...",
+    "api_key": "ApiKey XXXXXXX:xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "environment_id": "xxxxxxxx-XXXX-xxxx-XXXX-xxxxxxxxxxxx",
+    "server_address": "api.connect.cloudblue.com",
     "use_github_actions": "y",
     "use_asyncio": "n",
     "Capabilities_Info": "In order to initialize your extension, we require to know what capabilities it must support, please answer below y (for Yes) or n (for No). Press enter to continue...",
