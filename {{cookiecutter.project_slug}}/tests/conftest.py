@@ -122,8 +122,8 @@ def response_factory():
 {% if cookiecutter.use_asyncio == 'y' %}
 @pytest.mark.asyncio
 @pytest.fixture
-async def async_client_factory():
-    async def _create_async_client(connect_responses, httpx_mock):
+async def async_client_factory(httpx_mock):
+    async def _create_async_client(connect_responses):
         response_iterator = iter(connect_responses)
 
         async def _execute_http_call(self, method, url, kwargs):
