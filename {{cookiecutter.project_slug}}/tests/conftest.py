@@ -3,6 +3,9 @@ from collections.abc import Iterable
 from types import MethodType
 from urllib.parse import parse_qs
 
+{% if cookiecutter.use_asyncio == 'y' -%}
+import httpx
+{% endif -%}
 import pytest
 import requests
 import responses
@@ -116,30 +119,7 @@ def response_factory():
         )
     return _create_response
 
-
-@pytest.fixture
-def sync_client_factory():
-    def _create_sync_client(connect_responses):
-        response_iterator = iter(connect_responses)
-
-        def _execute_http_call(self, method, url, kwargs):
-            mock_kwargs = _mock_kwargs_generator(response_iterator, url)
-            with responses.RequestsMock() as rsps:
-                rsps.add(
-                    method.upper(),
-                    url,
-                    **mock_kwargs,
-                )
-                self.response = requests.request(method, url, **kwargs)
-                if self.response.status_code >= 400:
-                    self.response.raise_for_status()
-
-        client = ConnectClient('Key', use_specs=False)
-        client._execute_http_call = MethodType(_execute_http_call, client)
-        return client
-    return _create_sync_client
-
-
+{% if cookiecutter.use_asyncio == 'y' %}
 @pytest.mark.asyncio
 @pytest.fixture
 async def async_client_factory():
@@ -163,3 +143,27 @@ async def async_client_factory():
         client._execute_http_call = MethodType(_execute_http_call, client)
         return client
     return _create_async_client
+{% else %}
+@pytest.fixture
+def sync_client_factory():
+    def _create_sync_client(connect_responses):
+        response_iterator = iter(connect_responses)
+
+        def _execute_http_call(self, method, url, kwargs):
+            mock_kwargs = _mock_kwargs_generator(response_iterator, url)
+            with responses.RequestsMock() as rsps:
+                rsps.add(
+                    method.upper(),
+                    url,
+                    **mock_kwargs,
+                )
+                self.response = requests.request(method, url, **kwargs)
+                if self.response.status_code >= 400:
+                    self.response.raise_for_status()
+
+        client = ConnectClient('Key', use_specs=False)
+        client._execute_http_call = MethodType(_execute_http_call, client)
+        return client
+    return _create_sync_client
+{% endif %}
+
