@@ -5,12 +5,19 @@ from urllib.parse import parse_qs
 
 {% if cookiecutter.use_asyncio == 'y' -%}
 import httpx
+
 {% endif -%}
+
 import pytest
+
+{% if cookiecutter.use_asyncio != 'y' -%}
 import requests
+
+{% endif -%}
+
 import responses
 
-from connect.client import AsyncConnectClient, ConnectClient
+from connect.client import {% if cookiecutter.use_asyncio == 'y' %}AsyncConnectClient{% else %}ConnectClient{% endif %}
 
 
 ConnectResponse = namedtuple(
@@ -63,27 +70,33 @@ def _mock_kwargs_generator(response_iterator, url):
         mock_kwargs['status'] = 200
         mock_kwargs['headers'] = {'Content-Range': f'items 0-{end}/{res.count}'}
         mock_kwargs['json'] = []
+
+    mock_kwargs.update(_value_arg_validation(res))
+    return mock_kwargs
+
+
+def _value_arg_validation(res):
+    result = {}
     if isinstance(res.value, Iterable):
         count = len(res.value)
         end = 0 if count == 0 else count - 1
-        mock_kwargs['status'] = 200
-        mock_kwargs['json'] = res.value
-        mock_kwargs['headers'] = {
-            'Content-Range': f'items 0-{end}/{count}'
+        result['status'] = 200
+        result['json'] = res.value
+        result['headers'] = {
+            'Content-Range': f'items 0-{end}/{count}',
         }
     elif isinstance(res.value, dict):
-        mock_kwargs['status'] = res.status or 200
-        mock_kwargs['json'] = res.value
+        result['status'] = res.status or 200
+        result['json'] = res.value
     elif res.value is None:
         if res.exception:
-            mock_kwargs['body'] = res.exception
+            result['body'] = res.exception
         else:
-            mock_kwargs['status'] == res.status
+            result['status'] = res.status
     else:
-        mock_kwargs['status'] = res.status or 200
-        mock_kwargs['body'] = str(res.value)
-    
-    return mock_kwargs
+        result['status'] = res.status or 200
+        result['body'] = str(res.value)
+    return result
 
 
 @pytest.fixture
@@ -165,5 +178,4 @@ def sync_client_factory():
         client._execute_http_call = MethodType(_execute_http_call, client)
         return client
     return _create_sync_client
-{% endif %}
-
+{%- endif %}

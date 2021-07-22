@@ -17,10 +17,6 @@ STATUSES = [
     'failed',
 ]
 
-
-def remove_license():
-        os.remove('LICENSE')
-
 def remove_github_actions():
     shutil.rmtree('.github')
 
@@ -71,10 +67,7 @@ def product_capabilities(descriptor):
     if '{{ cookiecutter.product_capabilities_2of2 }}'.lower() == 'y':
         descriptor['capabilities']['product_custom_event_processing'] = []
 
-def main():
-    if '{{ cookiecutter.license }}' == 'Other, not Open-source':
-        remove_license()
-    
+def main():    
     if '{{ cookiecutter.use_github_actions }}'.lower() == 'n':
         remove_github_actions()
     

@@ -22,7 +22,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_asset_purchase_request(request)
     assert result.status == 'success'
@@ -44,7 +44,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_asset_change_request(request)
     assert result.status == 'success'
@@ -66,7 +66,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_asset_suspend_request(request)
     assert result.status == 'success'
@@ -88,7 +88,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_asset_resume_request(request)
     assert result.status == 'success'
@@ -110,7 +110,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_asset_cancel_request(request)
     assert result.status == 'success'
@@ -132,7 +132,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_asset_adjustment_request(request)
     assert result.status == 'success'
@@ -154,7 +154,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.validate_asset_purchase_request(request)
     assert result.status == 'success'
@@ -177,7 +177,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.validate_asset_change_request(request)
     assert result.status == 'success'
@@ -200,7 +200,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_tier_config_setup_request(request)
     assert result.status == 'success'
@@ -222,7 +222,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_tier_config_change_request(request)
     assert result.status == 'success'
@@ -243,7 +243,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.validate_tier_config_setup_request(request)
     assert result.status == 'success'
@@ -266,7 +266,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.validate_tier_config_change_request(request)
     assert result.status == 'success'
@@ -288,7 +288,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.execute_product_action(request)
     assert result.status == 'success'
@@ -312,7 +312,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
         response_factory(count=100),
         response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
     ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
     ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_product_custom_event(request)
     assert result.status == 'success'
