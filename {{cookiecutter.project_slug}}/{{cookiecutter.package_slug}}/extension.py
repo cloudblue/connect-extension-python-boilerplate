@@ -102,7 +102,7 @@ class {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(Extension)
         self.logger.info(f"Obtained request with id {request['id']}")
         return ValidationResponse.done(request)
 
-    {%- endif %}
+    {% endif -%}
 
     {% if cookiecutter.tier_config_validation_capabilities_1of2 == 'y' -%}
     {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def validate_tier_config_setup_request(self, request):
