@@ -28,8 +28,9 @@
     "subscription_validation_capabilities_2of2": "Would you like to validate asset change requests? (default: n)",
     "product_capabilities_1of2": "Would you like to execute product actions? (default: n)",
     "product_capabilities_2of2": "Would you like to process product custom events? (default: n)",
-    "tier_config_process_capabilities_1of2": "Would you like to process tier config setup requests? (default: n)",
-    "tier_config_process_capabilities_2of2": "Would you like to process tier config change requests? (default: n)",
+    "tier_config_process_capabilities_1of3": "Would you like to process tier config setup requests? (default: n)",
+    "tier_config_process_capabilities_2of3": "Would you like to process tier config change requests? (default: n)",
+    "tier_config_process_capabilities_3of3": "Would you like to process tier config adjustment requests? (default: n)",
     "tier_config_validation_capabilities_1of2": "Would you like to validate tier config setup requests? (default: n)",
     "tier_config_validation_capabilities_2of2": "Would you like to validate tier config change requests? (default: n)"
 }

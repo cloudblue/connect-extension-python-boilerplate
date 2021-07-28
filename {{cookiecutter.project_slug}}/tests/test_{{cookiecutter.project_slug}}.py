@@ -185,7 +185,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
 {% endif -%}
 
 
-{% if cookiecutter.tier_config_process_capabilities_1of2 == 'y' %}
+{% if cookiecutter.tier_config_process_capabilities_1of3 == 'y' %}
 {% if cookiecutter.use_asyncio == 'y' %}
 @pytest.mark.asyncio
 {%- endif %}
@@ -207,7 +207,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
 {% endif -%}
 
 
-{% if cookiecutter.tier_config_process_capabilities_2of2 == 'y' %}
+{% if cookiecutter.tier_config_process_capabilities_2of3 == 'y' %}
 {% if cookiecutter.use_asyncio == 'y' %}
 @pytest.mark.asyncio
 {%- endif %}
@@ -227,6 +227,29 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
     result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_tier_config_change_request(request)
     assert result.status == 'success'
 {% endif -%}
+
+
+{% if cookiecutter.tier_config_process_capabilities_3of3 == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_tier_config_adjustment_request(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_tier_config_adjustment_request(request)
+    assert result.status == 'success'
+{% endif -%}
+
 
 {% if cookiecutter.tier_config_validation_capabilities_1of2 == 'y' %}
 {% if cookiecutter.use_asyncio == 'y' %}
@@ -273,6 +296,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
     assert result.data == request
 {% endif -%}
 
+
 {% if cookiecutter.product_capabilities_1of2 == 'y' %}
 {% if cookiecutter.use_asyncio == 'y' %}
 @pytest.mark.asyncio
@@ -296,6 +320,7 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
     assert result.headers is None
     assert result.body is None
 {% endif -%}
+
 
 {% if cookiecutter.product_capabilities_2of2 == 'y' %}
 {% if cookiecutter.use_asyncio == 'y' %}

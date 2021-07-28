@@ -47,11 +47,14 @@ def subscription_validation_capabilities(descriptor):
         descriptor['capabilities']['asset_change_request_validation'] = STATUSES
 
 def tierconfig_processing_capabilities(descriptor):
-    if '{{ cookiecutter.tier_config_process_capabilities_1of2 }}'.lower() == 'y':
+    if '{{ cookiecutter.tier_config_process_capabilities_1of3 }}'.lower() == 'y':
         descriptor['capabilities']['tier_config_setup_request_processing'] = STATUSES
     
-    if '{{ cookiecutter.tier_config_process_capabilities_2of2 }}'.lower() == 'y':
+    if '{{ cookiecutter.tier_config_process_capabilities_2of3 }}'.lower() == 'y':
         descriptor['capabilities']['tier_config_change_request_processing'] = STATUSES
+
+    if '{{ cookiecutter.tier_config_process_capabilities_3of3 }}'.lower() == 'y':
+        descriptor['capabilities']['tier_config_adjustment_request_processing'] = STATUSES
 
 def tierconfig_validation_capabilities(descriptor):
     if '{{ cookiecutter.tier_config_validation_capabilities_1of2 }}'.lower() == 'y':
