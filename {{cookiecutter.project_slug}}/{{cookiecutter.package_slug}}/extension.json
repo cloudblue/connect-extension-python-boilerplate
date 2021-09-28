@@ -5,5 +5,16 @@
     "readme_url": "https://example.com/README.md",
     "changelog_url": "https://example.com/CHANGELOG.md",
     "capabilities": {
-    }
+    },
+    "variables": [
+        {
+            "name": "SECURE_VAR",
+            "secure": true
+        },
+        {
+            "name": "NOT_SECURE_VAR",
+            "initial_value": "https://example.com",
+            "secure": false
+        }
+    ]
 }
