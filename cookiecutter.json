@@ -32,5 +32,12 @@
     "tier_config_process_capabilities_2of3": "Would you like to process tier config change requests? (default: n)",
     "tier_config_process_capabilities_3of3": "Would you like to process tier config adjustment requests? (default: n)",
     "tier_config_validation_capabilities_1of2": "Would you like to validate tier config setup requests? (default: n)",
-    "tier_config_validation_capabilities_2of2": "Would you like to validate tier config change requests? (default: n)"
+    "tier_config_validation_capabilities_2of2": "Would you like to validate tier config change requests? (default: n)",
+    "usage_file_process": "Would you like to process usage files? (default: n)",
+    "usage_chunk_file_process": "Would you like to process usage chunk files? (default: n)",
+    "tier_account_update_request": "Would you like to process tier account update requests? (default: n)",
+    "listing_request_process_new": "Would you like to process new listing requests? (default: n)",
+    "listing_request_process_remove": "Would you like to process listing removal requests? (default: n)",
+    "include_schedules_example": "Would you like to include an example of schedulable method in your extension? (default: n)",
+    "include_variables_example": "Would you like to include an example of environment variables in your extension? (default: n)"
 }

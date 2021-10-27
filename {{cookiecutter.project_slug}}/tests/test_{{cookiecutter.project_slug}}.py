@@ -345,3 +345,135 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
     assert result.headers is None
     assert result.body is None
 {% endif -%}
+
+
+{% if cookiecutter.usage_file_process == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_usage_file(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1, 'type': 'type', 'status': 'status'}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_usage_file(request)
+    assert result.status == 'success'
+{% endif -%}
+
+
+{% if cookiecutter.usage_chunk_file_process == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_usage_chunk_file(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1, 'type': 'type', 'status': 'status'}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_usage_chunk_file(request)
+    assert result.status == 'success'
+{% endif -%}
+
+
+{% if cookiecutter.tier_account_update_request == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_tier_account_update_request(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1, 'type': 'type', 'status': 'status'}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_tier_account_update_request(request)
+    assert result.status == 'success'
+{% endif -%}
+
+
+{% if cookiecutter.listing_request_process_new == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_new_listing_request(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1, 'type': 'type', 'state': 'state'}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_new_listing_request(request)
+    assert result.status == 'success'
+{% endif -%}
+
+
+{% if cookiecutter.listing_request_process_remove == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_remove_listing_request(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1, 'type': 'type', 'state': 'state'}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_remove_listing_request(request)
+    assert result.status == 'success'
+{% endif -%}
+
+
+{% if cookiecutter.include_schedules_example == 'y' %}
+{% if cookiecutter.use_asyncio == 'y' %}
+@pytest.mark.asyncio
+{%- endif %}
+{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_execute_scheduled_processing(
+    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
+    response_factory,
+    logger,
+):
+    config = {}
+    request = {'id': 1}
+    responses = [
+        response_factory(count=100),
+        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
+    ]
+    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
+    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
+    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.execute_scheduled_processing(request)
+    assert result.status == 'success'
+{% endif -%}
