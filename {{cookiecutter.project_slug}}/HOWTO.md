@@ -26,6 +26,47 @@ Additionally, a basic boilerplate for writing unit tests has been created, you c
 **$ docker compose run {{ cookiecutter.project_slug }}_test**
 
 
+## Scheduled Methods
+In *{{ cookiecutter.project_slug }}/extension.json* file you can find the following section:
+```
+"schedulables": [
+    {
+      "name": "Schedulable method mock",
+      "description": "It can be used to test DevOps scheduler.",
+      "method": "execute_scheduled_processing"
+    }
+  ],
+```
+Please modify this section to add methods which you need to be executed periodically, i.e. you need to perform monthly usage collection etc.
+If you do not have any scheduled methods, please remove this section. The method name specified in `method` property must be defined in your Extension class. 
+The method definition is the following: 
+``` 
+def execute_scheduled_processing(self, schedule):
+    ...
+```
+Details of a scheduled method above is just an example, you set your own name, description and method names. 
+
+
+## Environment variables
+You may add environment variables used by the extension on the descriptor file `extension.json`:
+
+    "variables":[
+        {
+            "name": "SECURE_VAR",
+            "secure": true
+        },
+        {
+            "name": "NOT_SECURE_VAR",
+            "initial_value": "https://example.com",
+            "secure": false
+        }
+    ]
+
+* *Secure variables*:
+You can add secure variables just setting the attribute `secure` to **true**. These sort of variables are secret, then the value is stored encrypted and never is displayed.
+* *Standard variables*:
+They are standard ones, not storing sensible data.
+
 ## Community Resources
 
 Please take note about this links in order to get additional information:

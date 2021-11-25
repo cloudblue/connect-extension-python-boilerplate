@@ -23,6 +23,9 @@ from connect.eaas.extension import (
     {%- if cookiecutter.product_capabilities_1of2 == 'y' %}
     ProductActionResponse,
     {%- endif %}
+    {%- if cookiecutter.include_schedules_example == 'y' %}
+    ScheduledExecutionResponse,
+    {%- endif %}
     {%- if (
         cookiecutter.subscription_validation_capabilities_1of2 == 'y' or 
         cookiecutter.subscription_validation_capabilities_2of2 == 'y' or
@@ -137,5 +140,64 @@ class {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(Extension)
     {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_product_custom_event(self, request):
         self.logger.info(f"Obtained custom event with following data: {request}")
         return CustomEventResponse.done()
+
+    {% endif -%}
+
+    {% if cookiecutter.usage_file_process == 'y' -%}
+    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_usage_file(self, request):  # pragma: no cover
+        self.logger.info(
+            f"Received event for usage file  {request['id']}, type {request['type']} "
+            f"in status {request['status']}",
+        )
+        return ProcessingResponse.done()
+
+    {% endif -%}
+
+    {% if cookiecutter.usage_chunk_file_process == 'y' -%}
+    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_usage_chunk_file(self, request):  # pragma: no cover
+        self.logger.info(
+            f"Received event for usage chunks file  {request['id']}, type {request['type']} "
+            f"in status {request['status']}",
+        )
+        return ProcessingResponse.done()
+
+    {% endif -%}
+
+    {% if cookiecutter.tier_account_update_request == 'y' -%}
+    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_tier_account_update_request(self, request):  # pragma: no cover
+        self.logger.info(
+            f"Received event for tier account request  {request['id']}, type {request['type']} "
+            f"in status {request['status']}",
+        )
+        return ProcessingResponse.done()
+
+    {% endif -%}
+
+    {% if cookiecutter.listing_request_process_new == 'y' -%}
+    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_new_listing_request(self, request):  # pragma: no cover
+        self.logger.info(
+            f"Received event for listing request  {request['id']}, type {request['type']} "
+            f"in status {request['state']}",
+        )
+        return ProcessingResponse.done()
+
+    {% endif -%}
+
+    {% if cookiecutter.listing_request_process_remove == 'y' -%}
+    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_remove_listing_request(self, request):  # pragma: no cover
+        self.logger.info(
+            f"Received event for listing request  {request['id']}, type {request['type']} "
+            f"in status {request['state']}",
+        )
+        return ProcessingResponse.done()
+
+    {% endif -%}
+
+    {% if cookiecutter.include_schedules_example == 'y' -%}
+    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def execute_scheduled_processing(self, schedule):  # pragma: no cover
+        self.logger.info(
+            f"Received event for schedule  {schedule['id']}",
+        )
+        return ScheduledExecutionResponse.done()
 
     {% endif -%}
