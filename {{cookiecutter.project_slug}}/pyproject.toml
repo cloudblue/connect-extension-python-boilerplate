@@ -22,7 +22,7 @@ pytest-cov = "^2.10.1"
 pytest-mock = "^3.3.1"
 pytest-asyncio = "^0.15.1"
 pytest-httpx = "^0.12.0"
-coverage = {extras = ["toml"], version = "^5.3"}
+coverage = { extras = ["toml"], version = "^5.3" }
 responses = "^0.12.0"
 flake8 = "~3.8"
 flake8-bugbear = "~20"
@@ -46,6 +46,7 @@ testpaths = "tests"
 addopts = "--cov={{ cookiecutter.package_slug }} --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
 
 [tool.coverage.run]
+relative_files = true
 branch = true
 
 [tool.coverage.report]
