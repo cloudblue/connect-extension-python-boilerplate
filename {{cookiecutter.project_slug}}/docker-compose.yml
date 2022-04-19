@@ -3,7 +3,7 @@ version: '3'
 services:
   {{cookiecutter.project_slug}}_dev:
     container_name: {{cookiecutter.project_slug}}_dev
-    image: cloudblueconnect/connect-extension-runner:24.6
+    image: cloudblueconnect/connect-extension-runner:25.0
     command: cextrun -d
     volumes: 
       - .:/extension
@@ -12,7 +12,7 @@ services:
 
   {{cookiecutter.project_slug}}_bash:
     container_name: {{cookiecutter.project_slug}}_bash
-    image: cloudblueconnect/connect-extension-runner:24.6
+    image: cloudblueconnect/connect-extension-runner:25.0
     working_dir: /extension
     command: /bin/bash
     stdin_open: true
@@ -24,7 +24,7 @@ services:
 
   {{cookiecutter.project_slug}}_test:
     container_name: {{cookiecutter.project_slug}}_test
-    image: cloudblueconnect/connect-extension-runner:24.6
+    image: cloudblueconnect/connect-extension-runner:25.0
     working_dir: /extension
     command: /bin/bash -c "poetry install && poetry run pytest"
     volumes:
