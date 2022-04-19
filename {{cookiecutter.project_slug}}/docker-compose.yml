@@ -26,7 +26,7 @@ services:
     container_name: {{cookiecutter.project_slug}}_test
     image: cloudblueconnect/connect-extension-runner:24.6
     working_dir: /extension
-    command: /bin/bash -c "poetry install && pytest --verbose --cov={{cookiecutter.package_slug}} --cov-report=html --cov-report=term-missing:skip-covered"
+    command: /bin/bash -c "poetry install && poetry run pytest"
     volumes:
       - .:/extension
     env_file:
