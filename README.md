@@ -1,6 +1,7 @@
 # Cookiecutter for CloudBlue Connect Extensions  
   
-> :warning: is recommended to always use the [Connect CLI](https://github.com/cloudblue/connect-cli) in order to bootstrap projects since may enhance the experience and ensure usage of latest functionalities
+
+> :warning: Is recommended to always use the [Connect CLI](https://github.com/cloudblue/connect-cli) in order to bootstrap projects since may enhance the experience and ensure usage of latest functionalities
 
 
 Powered by [Cookiecutter](https://github.com/cookiecutter/cookiecutter), Cookiecutter for CloudBlue Connect Extensions provides a framework for boostraping your custom extensions for Connect.
