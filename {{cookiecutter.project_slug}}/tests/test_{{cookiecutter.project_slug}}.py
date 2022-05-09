@@ -413,50 +413,6 @@ from {{ cookiecutter.package_slug }}.extension import {{ cookiecutter.project_na
 {% endif -%}
 
 
-{% if cookiecutter.listing_request_process_new == 'y' %}
-{% if cookiecutter.use_asyncio == 'y' %}
-@pytest.mark.asyncio
-{%- endif %}
-{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_new_listing_request(
-    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
-    response_factory,
-    logger,
-):
-    config = {}
-    request = {'id': 1, 'type': 'type', 'state': 'state'}
-    responses = [
-        response_factory(count=100),
-        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
-    ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
-    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
-    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_new_listing_request(request)
-    assert result.status == 'success'
-{% endif -%}
-
-
-{% if cookiecutter.listing_request_process_remove == 'y' %}
-{% if cookiecutter.use_asyncio == 'y' %}
-@pytest.mark.asyncio
-{%- endif %}
-{% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def test_process_remove_listing_request(
-    {% if cookiecutter.use_asyncio == 'y' %}async_client_factory{% else %}sync_client_factory{% endif %},
-    response_factory,
-    logger,
-):
-    config = {}
-    request = {'id': 1, 'type': 'type', 'state': 'state'}
-    responses = [
-        response_factory(count=100),
-        response_factory(value=[{'id': 'item-1', 'value': 'value1'}]),
-    ]
-    client = {% if cookiecutter.use_asyncio == 'y' %}await async_client_factory{% else %}sync_client_factory{% endif %}(responses)
-    ext = {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(client, logger, config)
-    result = {% if cookiecutter.use_asyncio == 'y' %}await {% endif %}ext.process_remove_listing_request(request)
-    assert result.status == 'success'
-{% endif -%}
-
-
 {% if cookiecutter.include_schedules_example == 'y' %}
 {% if cookiecutter.use_asyncio == 'y' %}
 @pytest.mark.asyncio
