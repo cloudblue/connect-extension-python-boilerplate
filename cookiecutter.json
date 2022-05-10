@@ -36,8 +36,6 @@
     "usage_file_process": "Would you like to process usage files? (default: n)",
     "usage_chunk_file_process": "Would you like to process usage chunk files? (default: n)",
     "tier_account_update_request": "Would you like to process tier account update requests? (default: n)",
-    "listing_request_process_new": "Would you like to process new listing requests? (default: n)",
-    "listing_request_process_remove": "Would you like to process listing removal requests? (default: n)",
     "include_schedules_example": "Would you like to include an example of schedulable method in your extension? (default: n)",
     "include_variables_example": "Would you like to include an example of environment variables in your extension? (default: n)"
 }

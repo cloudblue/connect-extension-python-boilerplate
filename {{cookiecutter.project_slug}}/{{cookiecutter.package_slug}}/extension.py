@@ -173,26 +173,6 @@ class {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(Extension)
 
     {% endif -%}
 
-    {% if cookiecutter.listing_request_process_new == 'y' -%}
-    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_new_listing_request(self, request):  # pragma: no cover
-        self.logger.info(
-            f"Received event for listing request  {request['id']}, type {request['type']} "
-            f"in status {request['state']}",
-        )
-        return ProcessingResponse.done()
-
-    {% endif -%}
-
-    {% if cookiecutter.listing_request_process_remove == 'y' -%}
-    {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_remove_listing_request(self, request):  # pragma: no cover
-        self.logger.info(
-            f"Received event for listing request  {request['id']}, type {request['type']} "
-            f"in status {request['state']}",
-        )
-        return ProcessingResponse.done()
-
-    {% endif -%}
-
     {% if cookiecutter.include_schedules_example == 'y' -%}
     {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def execute_scheduled_processing(self, schedule):  # pragma: no cover
         self.logger.info(
