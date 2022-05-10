@@ -22,14 +22,6 @@ REQUESTS_SCHEDULED_ACTION_STATUSES = [
     'revoked',
 ]
 
-LISTING_REQUEST_STATUSES = [
-    'draft',
-    'reviewing',
-    'deploying',
-    'canceled',
-    'completed',
-]
-
 TIER_ACCOUNT_UPDATE_STATUSES = [
     'pending',
     'accepted',
@@ -127,17 +119,6 @@ def product_capabilities(descriptor):
         descriptor['capabilities']['product_custom_event_processing'] = []
 
 
-def process_listing_request_capabilities(descriptor):
-    if '{{cookiecutter.listing_request_process_new}}'.lower() == 'y':
-        descriptor['capabilities'][
-            'listing_new_request_processing'
-        ] = LISTING_REQUEST_STATUSES
-    if '{{cookiecutter.listing_request_process_remove}}'.lower() == 'y':
-        descriptor['capabilities'][
-            'listing_remove_request_processing'
-        ] = LISTING_REQUEST_STATUSES
-
-
 def process_tier_account_update_capabilities(descriptor):
     if '{{cookiecutter.tier_account_update_request}}'.lower() == 'y':
         descriptor['capabilities'][
@@ -194,7 +175,6 @@ def main():
     tierconfig_processing_capabilities(descriptor)
     tierconfig_validation_capabilities(descriptor)
     product_capabilities(descriptor)
-    process_listing_request_capabilities(descriptor)
     process_tier_account_update_capabilities(descriptor)
     process_usage_file_capabilities(descriptor)
 
