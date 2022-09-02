@@ -146,7 +146,7 @@ class {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(Extension)
     {% if cookiecutter.usage_file_process == 'y' -%}
     {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_usage_file(self, request):  # pragma: no cover
         self.logger.info(
-            f"Received event for usage file  {request['id']}, type {request['type']} "
+            f"Received event for usage file {request['id']} "
             f"in status {request['status']}",
         )
         return ProcessingResponse.done()
@@ -156,7 +156,7 @@ class {{ cookiecutter.project_name|title|replace(" ", "") }}Extension(Extension)
     {% if cookiecutter.usage_chunk_file_process == 'y' -%}
     {% if cookiecutter.use_asyncio == 'y' %}async {% endif %}def process_usage_chunk_file(self, request):  # pragma: no cover
         self.logger.info(
-            f"Received event for usage chunks file  {request['id']}, type {request['type']} "
+            f"Received event for usage chunks file {request['id']} "
             f"in status {request['status']}",
         )
         return ProcessingResponse.done()
